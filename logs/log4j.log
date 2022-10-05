@@ -1,0 +1,27 @@
+2022-10-04 15:43:04 INFO  Log:11 - =====================================loginTest TEST START=========================================
+2022-10-04 15:43:04 INFO  Log:22 - user is going to click on signin
+2022-10-04 15:43:09 INFO  Log:22 - Enter username and pasword
+2022-10-04 15:43:23 INFO  Log:22 - verifying if user is able to login
+2022-10-04 15:43:24 INFO  Log:22 - login is success
+2022-10-04 22:24:06 INFO  Log:11 - =====================================loginTest TEST START=========================================
+2022-10-04 22:24:06 INFO  Log:22 - user is going to click on signin
+2022-10-04 22:24:09 INFO  Log:22 - Enter username and pasword
+2022-10-04 22:24:14 INFO  Log:22 - verifying if user is able to login
+2022-10-04 22:24:14 INFO  Log:22 - login is success
+2022-10-04 22:24:28 INFO  Log:11 - =====================================loginTest TEST START=========================================
+2022-10-04 22:24:28 INFO  Log:22 - user is going to click on signin
+2022-10-04 22:24:30 INFO  Log:22 - Enter username and pasword
+2022-10-04 22:24:33 INFO  Log:22 - verifying if user is able to login
+2022-10-04 22:24:45 INFO  Log:11 - =====================================loginTest TEST START=========================================
+2022-10-04 22:24:45 INFO  Log:22 - user is going to click on signin
+2022-10-04 22:24:48 INFO  Log:22 - Enter username and pasword
+2022-10-04 22:24:51 INFO  Log:22 - verifying if user is able to login
+2022-10-04 22:33:25 INFO  Log:11 - =====================================loginTest TEST START=========================================
+2022-10-04 22:33:25 INFO  Log:22 - user is going to click on signin
+2022-10-04 22:33:29 INFO  Log:22 - Enter username and pasword
+2022-10-04 22:33:31 INFO  Log:22 - verifying if user is able to login
+2022-10-04 22:37:07 INFO  Log:11 - =====================================loginTest TEST START=========================================
+2022-10-04 22:37:07 INFO  Log:22 - user is going to click on signin
+2022-10-04 22:37:10 INFO  Log:22 - Enter username and pasword
+2022-10-04 22:37:13 INFO  Log:22 - verifying if user is able to login
+2022-10-04 22:37:13 INFO  Log:22 - login is success
