@@ -3,6 +3,7 @@ package com.mystore.testcases;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.mystore.base.BaseClass;
@@ -16,25 +17,26 @@ public class LoginPageTest extends BaseClass {
 	LoginPage loginPage;
 	IndexPage indexPage;
 	HomePage homePage;
-	@BeforeMethod
-	public void setUp() {
-		launchApp();
+	@Parameters("browser")
+	@BeforeMethod(alwaysRun = true, groups = {"smoke", "sanity", "regresion"})
+	public void setUp(String browser) {
+		launchApp(browser);
 		indexPage = new IndexPage();
 	}
 	
-	@Test
-	public void loginTest() {
+	@Test(dataProvider = "dataLogin", dataProviderClass = DataProviders.class, groups = {"smoke", "sanity"})
+	public void loginTest(String user, String pass) {
 		Log.startTestCase("loginTest");
 		Log.info("user is going to click on signin");
 		loginPage = indexPage.clickOnSignIn();
 		Log.info("Enter username and pasword");
-		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		homePage = loginPage.login(user, pass);
 		Log.info("verifying if user is able to login");
 		Assert.assertEquals(homePage.currUrl(), "http://automationpractice.com/index.php?controller=my-account");
 		Log.info("login is success");
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true, groups = {"smoke", "sanity", "regresion"})
 	public void tearDown() {
 		getDriver().quit();
 	}

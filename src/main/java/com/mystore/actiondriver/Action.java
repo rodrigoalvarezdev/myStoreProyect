@@ -1,9 +1,15 @@
 package com.mystore.actiondriver;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -132,5 +138,22 @@ public class Action extends BaseClass {
 	public static void explicitWait(WebElement ele) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(7));
 		wait.until(ExpectedConditions.visibilityOf(ele));
+	}
+	
+	public static String screenShot(WebDriver driver, String filename) {
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+		String destination = System.getProperty("user.dir") + "\\screenShots\\" + filename + "_" + dateName + ".png";
+
+		try {
+			FileUtils.copyFile(source, new File(destination));
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		// This new path for jenkins
+		String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
+				+ dateName + ".png";
+		return newImageString;
 	}
 }

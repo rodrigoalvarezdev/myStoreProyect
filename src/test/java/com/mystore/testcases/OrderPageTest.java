@@ -3,6 +3,7 @@ package com.mystore.testcases;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.mystore.base.BaseClass;
@@ -16,13 +17,14 @@ public class OrderPageTest extends BaseClass {
 	SearchResultPage searchResultPage;
 	AddToCartPage addToCartPage;
 	OrderPage orderPage;
-	@BeforeMethod
-	public void setUp() {
-		launchApp();
+	@Parameters("browser")
+	@BeforeMethod(alwaysRun = true,groups = {"smoke", "sanity", "regresion"})
+	public void setUp(String browser) {
+		launchApp(browser);
 		indexPage = new IndexPage();
 	}
 	
-	@Test
+	@Test(groups = "regresion")
 	public void totalPriceTest() {
 		searchResultPage = indexPage.searchProduct("t-shirt");
 		addToCartPage =  searchResultPage.clickOnProduct();
@@ -35,7 +37,7 @@ public class OrderPageTest extends BaseClass {
 		Assert.assertEquals(expectedPrice, totalPrice);
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true,groups = {"smoke", "sanity", "regresion"})
 	public void tearDown() {
 		getDriver().quit();
 	}

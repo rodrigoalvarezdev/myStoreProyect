@@ -3,6 +3,7 @@ package com.mystore.testcases;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.mystore.base.BaseClass;
@@ -28,13 +29,14 @@ public class EndToEndTest extends BaseClass{
 	PaymentPage paymentPage;
 	OrderSumaryPage orderSumaryPage;
 	OrderConfirmationPage orderConfirmationPage;
-	@BeforeMethod
-	public void setUp() {
-		launchApp();
+	@Parameters("browser")
+	@BeforeMethod(alwaysRun = true,groups = {"smoke", "sanity", "regresion"})
+	public void setUp(String browser) {
+		launchApp(browser);
 		indexPage = new IndexPage();
 	}
 	
-	@Test
+	@Test(groups = "regresion")
 	public void endToEndTest() {
 		searchResultPage = indexPage.searchProduct("t-shirt");
 		addToCartPage =  searchResultPage.clickOnProduct();
@@ -52,7 +54,7 @@ public class EndToEndTest extends BaseClass{
 		Assert.assertEquals(orderConfirmationPage.validateOrderCompleteTitle(), "Your order on My Store is complete.");
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true,groups = {"smoke", "sanity", "regresion"})
 	public void tearDown() {
 		getDriver().quit();
 	}
