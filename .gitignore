@@ -1,7 +1,6 @@
 .git
 .settings
 target
-test-output
 .classpath
 .project
 src/test/drivers
