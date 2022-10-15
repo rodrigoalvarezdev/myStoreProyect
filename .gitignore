@@ -6,3 +6,4 @@ target
 src/test/drivers
 screenshot
 test-output
+.gitignore
